@@ -7,6 +7,9 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -46,9 +49,9 @@ try {
 const apiKey = process.env.GEMINI_API_KEY || 'MISSING_API_KEY';
 const genAI = new GoogleGenerativeAI(apiKey);
 
-// Using gemini-1.5-flash for faster responses, but you can change to gemini-1.5-pro
+// Using gemini-pro
 const model = genAI.getGenerativeModel({
-  model: 'gemini-1.5-flash',
+  model: 'gemini-pro',
   systemInstruction: systemPrompt,
 });
 
