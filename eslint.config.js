@@ -13,6 +13,9 @@ export default [
                 document: "readonly",
                 fetch: "readonly",
                 console: "readonly",
+                navigator: "readonly",
+                self: "readonly",
+                caches: "readonly",
                 
                 // Node globals
                 process: "readonly",

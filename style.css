@@ -211,10 +211,10 @@ body {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.user-input:focus {
+.user-input:focus-visible {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3); /* Stronger visible focus */
 }
 
 .send-button {
@@ -229,6 +229,11 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
+}
+
+.send-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
 }
 
 .send-button:hover {

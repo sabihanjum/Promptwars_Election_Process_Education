@@ -2,6 +2,15 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Register Service Worker for PWA compliance
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(err => {
+        console.error('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+
   const chatForm = document.getElementById('chat-form');
   const userInput = document.getElementById('user-input');
   const chatHistory = document.getElementById('chat-history');
@@ -61,6 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /**
+   * Appends a message to the chat UI.
+   * @param {string} role - The role of the sender ('user' or 'assistant').
+   * @param {string} content - The message content.
+   * @param {boolean} [isHTML=false] - Whether the content should be rendered as HTML.
+   */
   function appendMessage(role, content, isHTML = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${role}-message`;
