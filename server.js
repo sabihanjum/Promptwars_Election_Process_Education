@@ -49,9 +49,11 @@ try {
 const apiKey = process.env.GEMINI_API_KEY || 'MISSING_API_KEY';
 const genAI = new GoogleGenerativeAI(apiKey);
 
-// Using gemini-pro
-const model = genAI.getGenerativeModel({
-  model: 'gemini-pro',
+// Trust proxy for Cloud Run
+app.set('trust proxy', 1);
+
+const app_model = genAI.getGenerativeModel({
+  model: 'gemini-1.5-pro',
   systemInstruction: systemPrompt,
 });
 
@@ -73,7 +75,7 @@ app.post('/api/chat', async (req, res) => {
       parts: [{ text: msg.content }]
     }));
 
-    const chat = model.startChat({
+    const chat = app_model.startChat({
       history: formattedHistory,
     });
 
@@ -90,7 +92,7 @@ app.post('/api/chat', async (req, res) => {
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'dist')));
-  app.get('*', (req, res) => {
+  app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
   });
 }
