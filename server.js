@@ -53,7 +53,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 app.set('trust proxy', 1);
 
 const app_model = genAI.getGenerativeModel({
-  model: 'gemini-pro-latest',
+  model: 'gemini-flash-latest',
   systemInstruction: systemPrompt,
 });
 
