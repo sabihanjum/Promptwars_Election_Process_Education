@@ -22,6 +22,7 @@ COPY --from=build /app/dist ./dist
 
 # Expose port (Cloud Run sets this to 8080 by default, but our Express app uses PORT env var)
 ENV PORT=8080
+ENV NODE_ENV=production
 EXPOSE 8080
 
 # Run the server

@@ -35,7 +35,7 @@ app.use('/api/', limiter);
 
 // Load the system prompt
 const SYSTEM_PROMPT_PATH = path.join(__dirname, 'ultimate_prompt.txt');
-let systemPrompt = '';
+let systemPrompt;
 try {
   systemPrompt = fs.readFileSync(SYSTEM_PROMPT_PATH, 'utf8');
 } catch (error) {

@@ -2,6 +2,7 @@
   "name": "promptwars_election_process_education",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
@@ -32,6 +33,7 @@
     "marked": "^18.0.2"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "eslint": "^10.2.1",
     "vite": "^8.0.10",
     "vitest": "^4.1.5"
